@@ -1,0 +1,7 @@
+.bg-body {
+    background-image: url("/img/background.jpg");
+    background-size: cover;
+    opacity: 0.70;
+    color: aqua;
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body class="bg-body">
+<div th:replace="master/layout :: navbar-fragment"></div>
+
+<div class="container m-5">
+    <div th:if="${mensaje}">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <strong th:text="${mensaje}"></strong>
+        </div>
+    </div>
+
+    <a class="btn btn-primary" href="/aliens/nuevo" role="button">Nuevo Alien</a>
+
+    <div class="row mt-3">
+        <div class="col-md-3 mb-3" th:each="a : ${aliens}">
+            <div class="card text-left text-dark">
+                <img class="card-img-top" th:src="@{/img/alien.png}" alt="alien">
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${a.nombre}"></h4>
+                    <p class="card-text">
+                        Planeta: <span th:text="${a.planeta.nombre}"></span>
+                        Nacimiento: <span th:text="${a.nacimiento.toLocaleString()}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="master/layout :: footer-fragment"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body class="bg-body">
+<div th:replace="master/layout :: navbar-fragment"></div>
+
+<div class="container m-5">
+    <h3 class="text-center">Nuevo Planeta</h3>
+    <form th:action="@{/planetas/registrar}" th:object="${planeta}" method="post" style="width: 500px; margin: auto;">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" th:field="*{nombre}" id="nombre" class="form-control"
+                   placeholder="Ingrese el nombre del planeta" required>
+        </div>
+        <div class="form-group">
+            <label for="info">Informacion</label>
+            <textarea th:field="*{info}" id="info" class="form-control" maxlength="200"
+                      placeholder="Ingrese informacion del planeta" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="foto">Foto</label>
+            <input type="text" th:field="*{foto}" id="foto" class="form-control"
+                   placeholder="Ingrese una foto del planeta" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Registrar Planeta</button>
+    </form>
+</div>
+
+<div th:replace="master/layout :: footer-fragment"></div>
+</body>
+</html>

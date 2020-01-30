@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body class="bg-body">
+    <div th:replace="master/layout :: navbar-fragment"></div>
+    <div class="container m-5">
+        <h3 class="text-center">Registrar un Alien</h3>
+        <form th:object="${alien}" th:action="@{/aliens/registrar}" method="post" style="width: 500px; margin: auto;">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" th:field="*{nombre}" id="nombre" class="form-control"
+                       placeholder="Nombre del Alien" required>
+            </div>
+            <div class="form-group">
+                <label for="nacimiento">Nacimiento</label>
+                <input type="date" th:field="*{nacimiento}" id="nacimiento" class="form-control"
+                       placeholder="Fecha de su Nacimiento" required>
+            </div>
+            <div class="form-group">
+                <label for="planeta">Planeta</label>
+                <select class="form-control" th:field="*{planeta}" id="planeta">
+                    <div th:each="p : ${planetas}">
+                        <option th:value="${p.id}" th:text="${p.nombre}"></option>
+                    </div>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Registrar Alien</button>
+        </form>
+    </div>
+<div th:replace="master/layout :: footer-fragment"></div>
+</body>
+</html>
